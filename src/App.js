@@ -1,68 +1,50 @@
-
-import axios from "axios"; 
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import React, { useState ,useEffect } from "react";
 import "./App.css";
 import Apod from "./Apod";
 
 
-const reqUrl="https://api.nasa.gov/planetary/apod?api_key=9lifFLncz4XaeZWbgrlercudeegx1zvZBIDzbycI"
+const reqUrl = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
 
-const urls=["&date=2022-12-03","&date=2022-12-02","&date=2022-11-26"]
-
-const reqUrl_dun="https://api.nasa.gov/planetary/apod?api_key=9lifFLncz4XaeZWbgrlercudeegx1zvZBIDzbycI&date=2022-12-02"
-
-const reqUrl_gecen="https://api.nasa.gov/planetary/apod?api_key=9lifFLncz4XaeZWbgrlercudeegx1zvZBIDzbycI&date=2022-11-26"
+const urls = ["&date=2022-12-02","&date=2022-12-01","&date=2022-11-24"]
 
 function App() {
   const [day, setDay] = useState(1);
-  const [apod,setApod]=useState(null);
+  const [apod, setApod] = useState(null);
 
-  useEffect(()=>{
-    axios.get(reqUrl+urls[day-1])
-    .then(res => {
-      setApod(res.data)
-    });
-  },[day])
+  useEffect(() => {
+      axios.get(reqUrl + urls[day - 1])
+      .then(res => {
+     setApod(res.data)
+  });
 
+  }, [day])
+  
 
-  console.log("apod bilgisi:", apod );
+  
+
 
   return (
     <div className="App">
 
       <div className="content">
-        <h1>Photo of the day -NASA</h1>
+        <h1>Photo of the day - NASA</h1>
         <div className="buttons">
-          <button onClick={() => setDay(1)}
-            className={day === 1 && "selected"}
-          >
-            Bugün
-          </button>
-
-          <button onClick={() => setDay(2)}
-            className={day === 2 && "selected"}
-          >
-            Dün
-          </button>
-
-          <button onClick={() => setDay(3)}
-            className={day === 3 && "selected"}
-          >
-            Geçen Hafta
-          </button>
+          <button onClick={() => setDay(1)} className={day === 1 ? 'selected' : ''}>Bugün</button>
+          <button onClick={() => setDay(2)} className={day === 2 ? 'selected' : ''}>Dün</button>
+          <button onClick={() => setDay(3)} className={day === 3 ? 'selected' : ''}>Geçen Hafta</button>
         </div>
 
-        
-
-        {apod===null ? <div>APOD yükleniyor</div>
-        :(
+        {apod === null 
+        ? <div>Sayfa yükleniyor</div>
+        : (
           <Apod dopa={apod}/>
         )
-        }
-
+        }        
       </div>
     </div>
-  )
+  );
 }
 
 export default App;
+ 

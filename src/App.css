@@ -1,6 +1,11 @@
+*{
+  background-color: black;
+  color:white;
+}
+
 .App {
-display:flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .App-logo {
@@ -9,31 +14,31 @@ justify-content: center;
 }
 
 html,body{
-  min-height:100vh;
+  min-height: 100vh;
 }
 
-.content{
+.content {
   max-width: 800px;
   width: 96%;
-  
 }
+
 
 .photo-img img{
-  width: 100vh;
-  aspect-ratio: 1.4;
+  width: 100%;
+border-color: white;
+border-style: dotted;
+
 }
 
-.buttons{
+.buttons {
   padding: 1em 0;
 }
-
 .buttons button{
-  border:1px solid #ddd;
+  border: 1px solid #ddd;
   font-size: 14px;
   padding: 8px 12px;
-  border-radius:3px;
+  border-radius: 3px;
   margin-right: 8px;
-  cursor:pointer;
 }
 
 .selected {
